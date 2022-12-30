@@ -46,11 +46,6 @@ function getTimeInHours() {
     currentHour = parseInt(resultsArray.location.localtime.substring(11, 13));
 }
 
-function viewportHeight() {
-    const getHeight = window.innerHeight;
-    body.style.minHeight = `${getHeight}px`;
-}
-
 // Build Display and nav locations
 async function buildDisplay() {
     current = [];
@@ -275,6 +270,13 @@ async function selectLocation() {
     try {
         const response = await fetch(apiUrl);
         resultsArray = await response.json();
+        setTimeout(() => {
+            if(navMain.classList.contains("toggle-menu")) {
+                body.style.backgroundColor = "black";
+            } else {
+                body.style.backgroundColor = "#50667f";
+            }
+        }, 0)
         displayCurrentLocation();
     } catch (error) {
 
@@ -289,11 +291,18 @@ function toggleNav() {
         cancelLocation();
         isToggled = false;
     }
+    setTimeout(() => {
+        if(navMain.classList.contains("toggle-menu")) {
+            body.style.backgroundColor = "black";
+        } else {
+            body.style.backgroundColor = "#50667f";
+        }
+    }, 200)
 }
 
 function selectOrDeleteLocation(e) {
     if(!editing) {
-        currentLocation = e.path[1].firstChild.textContent
+        currentLocation = e.target.parentElement.firstChild.firstChild.textContent;
         selectLocation();
         navMain.classList.toggle("toggle-menu");
         editBtn.classList.toggle("edit")
@@ -327,7 +336,6 @@ navContainer.addEventListener("click", selectOrDeleteLocation);
 navContainer.addEventListener("touchstart", selectOrDeleteLocation);
 
 // On load
-viewportHeight();
 if(!displayBuilt) {
     buildDisplay();
     displayBuilt = true

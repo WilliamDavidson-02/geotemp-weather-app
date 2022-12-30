@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
 
 :root {
-    --background: #586c83; 
-
-    --containerBlue:  rgba(59, 77, 97, .1);
+    --background: #50667f; 
 }
 
 html {
@@ -30,7 +28,7 @@ body {
     background-color: #3b4d61;
     position: fixed;
     bottom: 0;
-    z-index: 10;
+    z-index: 8;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -53,10 +51,6 @@ body {
 
 .editing {
     color: #FF3C5A;
-}
-
-.fa-ellipsis {
-    cursor: pointer;
 }
 
 .fa-trash {
@@ -97,7 +91,7 @@ body {
 }
 
 .toggle-menu {
-    min-height: 100vh;
+    height: calc(100vh - env(safe-area-inset-top));
     background-color: black;
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -164,7 +158,7 @@ a {
     width: 800px;
     display: flex;
     justify-content: space-between;
-    z-index: 10;
+    z-index: 8;
 }
 
 .add {
@@ -175,35 +169,6 @@ a {
     color: #fff;
     font-family: 'Inter', sans-serif;
     font-size: 15px;
-}
-
-/* ---- Clouds ---- */
-.weather-background-container {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: .15;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.cloud1 {
-    position: absolute;
-    width: 1512px;
-    height: 1414px;
-    left: 1692px;
-    top: -494px;
-}
-
-.cloud2 {
-    position: absolute;
-    width: 1512px;
-    height: 1414px;
-    left: -795px;
-    top: -529px;
 }
 
 /* ---- Search Container ---- */
@@ -246,7 +211,6 @@ input::placeholder {
     position: absolute;
     left: 20px;
     color: rgba(149, 149, 155, 1);
-    z-index: 10;
     pointer-events: none;
 }
 
