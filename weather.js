@@ -48,7 +48,7 @@ function getTimeInHours() {
 
 function viewportHeight() {
     const getHeight = window.innerHeight;
-    body.style.minHeight = `${getHeight}vh`;
+    body.style.height = `${getHeight}vh`;
 }
 
 // Build Display and nav locations
@@ -255,6 +255,7 @@ async function submitGeoLocation(e) {
         
     }
     locationInput.value = "";
+    locationInput.blur();
 }
 
 function addToStorage() {

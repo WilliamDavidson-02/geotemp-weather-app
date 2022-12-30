@@ -81,13 +81,9 @@ body {
     margin-bottom: 20px;
 }
 
-#nav h1, 
-#nav span {
-    pointer-events: none;
-}
-
 #nav {
     transition: ease .3s;
+    z-index: 10;
 }
 
 .weather-nav {
