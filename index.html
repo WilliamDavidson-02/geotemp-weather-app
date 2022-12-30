@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="img/GeoLocationLogo-01.png">
+    <link rel="stylesheet" href="main.css">
+    <title>GeoTemp</title>
+</head>
+<body>
+    <div class="weather-background-container">
+        <img class="cloud1" src="img/clouds.png">
+        <img class="cloud2" src="img/clouds.png">
+    </div>
+    <nav class="nav-container" id="nav-main">
+        <div class="icons">
+            <i class="fa-solid fa-bars" id="menu-bar"></i>
+            <i class="fa-solid fa-trash edit" id="edit" title="Edit Location List"></i>
+        </div>
+        <div class="weather-nav">
+            <h1 class="weather-title-nav">Weather</h1>
+            <form class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input class="search" placeholder="Search Location" type="text" id="getLocation" autocomplete="off">
+            </form>
+            <div id="nav"></div>
+            <div class="link-container">
+                <span class="link-cover">Read more about&nbsp;<a href="https://www.weatherapi.com/" class="apiLink" target="_blank">Weatherapi.com</a></span>
+            </div>
+        </div>
+    </nav>
+    <div class="add-location hidden" id="add-location-container">
+        <button class="add" id="cancel">Cancel</button>
+        <button class="add" id="add">Add Location</button>
+    </div>
+    <div class="weather-container">
+        <div class="weather-location-content" id="weather-location-content">
+            <span id="location"><i class="fa-solid fa-location-arrow"></i>&nbsp;Your Location</span>
+            <h1 class="forcast-title" id="forecast-title">--</h1>
+            <span id="high-low">--</span>
+            <span id="weather-type"></span>
+        </div>
+        <div class="container houre-forcaste-contaienr">
+            <span class="content-info"><i class="fa-regular fa-clock"></i>&nbsp;Hourly Forecast</span>
+            <div class="forecast-container" id="forecast-hours"></div>
+        </div>
+        <div class="extra-weather-info">
+            <div class="wind container">
+                <span class="content-info"><i class="fa-solid fa-wind"></i>&nbsp;Wind</span>
+                <div class="extra-content">
+                    <img src="img/compass-01.png" class="compass">
+                    <img src="img/arrow-compass-01.png" class="arrow" id="arrow">
+                    <div class="wind-ms" id="wind">5 m/s</div>
+                </div>
+            </div>
+            <div class="uv-index container">
+                <span class="content-info"><i class="fa-regular fa-sun"></i>&nbsp;UV Index</span>
+                <div class="uv-container">
+                    <h1 class="uv-num" id="uv-num"></h1>
+                    <h1 class="uv-definition" id="uv-definition"></h1>
+                    <input type="range" min="0" max="11" class="slider" id="uvRange" disabled>
+                </div>
+            </div>
+            <div class="humidity container">
+                <span class="content-info"><i class="fa-solid fa-droplet"></i>&nbsp;Humidity</span>
+                <div class="humidity-container">
+                    <h1 id="humidity"></h1>
+                </div>
+            </div>
+            <div class="feelslike container">
+                <span class="content-info"><i class="fa-solid fa-temperature-three-quarters"></i>&nbsp;Feels like</span>
+                <div class="feelsLike-container">
+                    <h1 class="forcast-title" id="feelsLike"></h1>
+                    <span class="content-info">The wind makes it feel colder</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+</html>
