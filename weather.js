@@ -46,6 +46,11 @@ function getTimeInHours() {
     currentHour = parseInt(resultsArray.location.localtime.substring(11, 13));
 }
 
+function viewportHeight() {
+    const getHeight = window.innerHeight;
+    body.style.minHeight = `${getHeight}vh`;
+}
+
 // Build Display and nav locations
 async function buildDisplay() {
     current = [];
@@ -318,6 +323,7 @@ navContainer.addEventListener("click", (e) => {
 });
 
 // On load
+viewportHeight();
 if(!displayBuilt) {
     buildDisplay();
     displayBuilt = true
