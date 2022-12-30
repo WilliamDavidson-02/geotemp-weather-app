@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
 
 :root {
-    --background: linear-gradient(to top, #425162, #586c83); 
+    --background: #586c83; 
 
     --containerBlue:  rgba(59, 77, 97, .1);
 }
@@ -15,7 +15,7 @@ body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
-    background-image: var(--background);
+    background-color: var(--background);
     color: #fff;
     font-family: 'Inter', sans-serif;
     display: flex;
@@ -97,7 +97,7 @@ body {
 }
 
 .toggle-menu {
-    height: 100vh;
+    min-height: 100vh;
     background-color: black;
     scroll-behavior: smooth;
     overflow-y: scroll;
