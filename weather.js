@@ -39,6 +39,7 @@ let currentHour = 0;
 let displayBuilt = false;
 let editing = false;
 let isToggled = false;
+let isScrolling = false;
 let currentLocation = "";
 
 
@@ -287,6 +288,7 @@ function toggleNav() {
     navMain.classList.toggle("toggle-menu");
     editBtn.classList.toggle("edit")
     body.scrollIntoView({ behavior: "instant", block: "start" });
+    navMain.scrollIntoView({ behavior: "instant", block: "start" });
     if(isToggled) {
         cancelLocation();
         isToggled = false;
@@ -333,7 +335,13 @@ cancelBtn.addEventListener("click", cancelLocation);
 addBtn.addEventListener("click", addToStorage);
 
 navContainer.addEventListener("click", selectOrDeleteLocation);
-navContainer.addEventListener("touchstart", selectOrDeleteLocation);
+navContainer.addEventListener("touchend", () => {
+    if(!isScrolling) {
+        isScrolling = true;
+    } else {
+        selectOrDeleteLocation(e);
+    }
+});
 
 // On load
 if(!displayBuilt) {
