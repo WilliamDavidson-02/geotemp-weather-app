@@ -48,7 +48,7 @@ function getTimeInHours() {
 
 function viewportHeight() {
     const getHeight = window.innerHeight;
-    body.style.height = `${getHeight}vh`;
+    body.style.minHeight = `${getHeight}px`;
 }
 
 // Build Display and nav locations
@@ -291,6 +291,22 @@ function toggleNav() {
     }
 }
 
+function selectOrDeleteLocation(e) {
+    if(!editing) {
+        currentLocation = e.path[1].firstChild.textContent
+        selectLocation();
+        navMain.classList.toggle("toggle-menu");
+        editBtn.classList.toggle("edit")
+        body.scrollIntoView({ behavior: "instant", block: "start" });
+    } else {    
+        const names = JSON.parse(localStorage.getItem("usersLocation"));
+        let deletingLocation = e.target.parentElement.firstChild.firstChild.textContent;
+        const filterNames =  names.filter((name) => name !== deletingLocation);
+        localStorage.setItem("usersLocation", JSON.stringify(filterNames));
+        buildDisplay();
+    }
+}
+
 function cancelLocation() {
     addLocationContainer.classList.add("hidden");
     buildDisplay();
@@ -307,21 +323,8 @@ editBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", cancelLocation);
 addBtn.addEventListener("click", addToStorage);
 
-navContainer.addEventListener("click", (e) => {
-    if(!editing) {
-        currentLocation = e.path[1].firstChild.textContent
-        selectLocation();
-        navMain.classList.toggle("toggle-menu");
-        editBtn.classList.toggle("edit")
-        body.scrollIntoView({ behavior: "instant", block: "start" });
-    } else {    
-        const names = JSON.parse(localStorage.getItem("usersLocation"));
-        let deletingLocation = e.target.parentElement.firstChild.firstChild.textContent;
-        const filterNames =  names.filter((name) => name !== deletingLocation);
-        localStorage.setItem("usersLocation", JSON.stringify(filterNames));
-        buildDisplay();
-    }
-});
+navContainer.addEventListener("click", selectOrDeleteLocation);
+navContainer.addEventListener("touchstart", selectOrDeleteLocation);
 
 // On load
 viewportHeight();

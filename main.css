@@ -15,7 +15,7 @@ body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
-    background: var(--background);
+    background-image: var(--background);
     color: #fff;
     font-family: 'Inter', sans-serif;
     display: flex;
