@@ -409,6 +409,10 @@ border: 4px solid #3B4D61;
 background: #fff;
 }
 
+input[type="range"][disabled] {
+    opacity: 1;
+}
+
 /* global class hidden */
 .hidden {
     display: none;

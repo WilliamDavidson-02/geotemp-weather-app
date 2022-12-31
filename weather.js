@@ -271,13 +271,11 @@ async function selectLocation() {
     try {
         const response = await fetch(apiUrl);
         resultsArray = await response.json();
-        setTimeout(() => {
-            if(navMain.classList.contains("toggle-menu")) {
-                body.style.backgroundColor = "black";
-            } else {
-                body.style.backgroundColor = "#50667f";
-            }
-        }, 0)
+        if(navMain.classList.contains("toggle-menu")) {
+            body.style.backgroundColor = "black";
+        } else {
+            body.style.backgroundColor = "#50667f";
+        }
         displayCurrentLocation();
     } catch (error) {
 
@@ -294,13 +292,11 @@ function toggleNav() {
         cancelLocation();
         isToggled = false;
     }
-    setTimeout(() => {
-        if(navMain.classList.contains("toggle-menu")) {
-            body.style.backgroundColor = "black";
-        } else {
-            body.style.backgroundColor = "#50667f";
-        }
-    }, 200)
+    if(navMain.classList.contains("toggle-menu")) {
+        body.style.backgroundColor = "black";
+    } else {
+        body.style.backgroundColor = "#50667f";
+    }
     if(!navMain.classList.contains("closed-nav")) {
         const getInnerHight = window.innerHeight;
         navMain.style.height = `${getInnerHight}px`;
