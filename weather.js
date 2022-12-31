@@ -298,7 +298,6 @@ function toggleNav() {
         cancelLocation();
         isToggled = false;
     }
-    icons.style.paddingTop = navMain.classList.contains("toggle-menu")  ? "40px" : "0px";
 }
 
 function selectOrDeleteLocation(e) {
