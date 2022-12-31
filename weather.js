@@ -23,6 +23,7 @@ const navMain = document.getElementById("nav-main");
 const locationInput = document.getElementById("getLocation");
 const form = document.querySelector("form");
 const menuBar = document.getElementById("menu-bar");
+const icons = document.getElementById("icons");
 // Add Location btn
 const addLocationContainer = document.getElementById("add-location-container");
 const cancelBtn = document.getElementById("cancel");
@@ -297,16 +298,14 @@ function toggleNav() {
         cancelLocation();
         isToggled = false;
     }
-
+    icons.style.paddingTop = navMain.classList.contains("toggle-menu")  ? "40px" : "0px";
 }
 
 function selectOrDeleteLocation(e) {
     if(!editing) {
         currentLocation = e.target.parentElement.firstChild.firstChild.textContent;
         selectLocation();
-        navMain.classList.toggle("toggle-menu");
-        editBtn.classList.toggle("edit")
-        body.scrollIntoView({ behavior: "instant", block: "start" });
+        toggleNav();
     } else {    
         const names = JSON.parse(localStorage.getItem("usersLocation"));
         let deletingLocation = e.target.parentElement.firstChild.firstChild.textContent;

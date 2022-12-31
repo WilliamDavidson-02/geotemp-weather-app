@@ -418,7 +418,6 @@ input[type="range"][disabled] {
 
 /* ---- Media Query ---- */
 @media (max-width: 1000px) {
-    .icons {padding-top: 40px;}
     .weather-container {width: 95%;}
     
     .container {box-sizing: border-box;}
