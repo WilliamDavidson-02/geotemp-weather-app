@@ -290,20 +290,14 @@ function toggleNav() {
     requestAnimationFrame(() => {
         body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
     })
-    navMain.classList.toggle("closed-nav");
     editBtn.classList.toggle("edit")
     body.scrollIntoView({ behavior: "instant", block: "start" });
-    navMain.scrollIntoView({ behavior: "instant", block: "start" });
+    navMain.scrollTo(0, 0);
     if(isToggled) {
         cancelLocation();
         isToggled = false;
     }
-    if(!navMain.classList.contains("closed-nav")) {
-        const getInnerHight = window.innerHeight;
-        navMain.style.height = `${getInnerHight}px`;
-    } else {
-        navMain.style.height = "";
-    }
+
 }
 
 function selectOrDeleteLocation(e) {

@@ -25,6 +25,7 @@ body {
 /* ---- Nav ---- */
 .nav-container {
     width: 100%;
+    height: 40px;
     background-color: #3b4d61;
     position: fixed;
     bottom: 0;
@@ -39,15 +40,11 @@ body {
 }
 
 .toggle-menu {
+    min-height: calc(100% - env(safe-area-inset-bottom));
     background-color: black;
     scroll-behavior: smooth;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-}
-
-.closed-nav {
-    height: 40px;
-    transition: ease .2s;
 }
 
 .icons {
@@ -421,6 +418,7 @@ input[type="range"][disabled] {
 
 /* ---- Media Query ---- */
 @media (max-width: 1000px) {
+    .icons {padding-top: 40px;}
     .weather-container {width: 95%;}
     
     .container {box-sizing: border-box;}
