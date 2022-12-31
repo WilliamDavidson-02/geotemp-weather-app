@@ -301,8 +301,10 @@ function toggleNav() {
     if(!navMain.classList.contains("closed-nav")) {
         const getInnerHight = window.innerHeight;
         navMain.style.height = `${getInnerHight}px`;
+        navMain.style.top = "0";
     } else {
         navMain.style.height = "";
+        navMain.style.top = "";
     }
 }
 
