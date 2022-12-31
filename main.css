@@ -36,7 +36,6 @@ body {
     box-shadow: rgba(154, 154, 154, 0.302) 0px 4px 12px;
     transition: ease .2s;
     touch-action: pan-y;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .toggle-menu {
