@@ -286,6 +286,7 @@ async function selectLocation() {
 
 function toggleNav() {
     navMain.classList.toggle("toggle-menu");
+    navMain.classList.toggle("closed-nav");
     editBtn.classList.toggle("edit")
     body.scrollIntoView({ behavior: "instant", block: "start" });
     navMain.scrollIntoView({ behavior: "instant", block: "start" });
@@ -300,6 +301,12 @@ function toggleNav() {
             body.style.backgroundColor = "#50667f";
         }
     }, 200)
+    if(!navMain.classList.contains("closed-nav")) {
+        const getInnerHight = window.innerHeight;
+        navMain.style.height = `${getInnerHight}px`;
+    } else {
+        navMain.style.height = "";
+    }
 }
 
 function selectOrDeleteLocation(e) {

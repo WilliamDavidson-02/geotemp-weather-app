@@ -24,7 +24,6 @@ body {
 /* ---- Nav ---- */
 .nav-container {
     width: 100%;
-    height: 40px;
     background-color: #3b4d61;
     position: fixed;
     bottom: 0;
@@ -36,6 +35,18 @@ body {
     box-shadow: rgba(154, 154, 154, 0.302) 0px 4px 12px;
     transition: ease .2s;
     touch-action: pan-y;
+}
+
+.toggle-menu {
+    background-color: black;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.closed-nav {
+    height: 40px;
+    transition: ease .2s;
 }
 
 .icons {
@@ -91,13 +102,6 @@ body {
     transition: ease .3s;
 }
 
-.toggle-menu {
-    height: calc(100vh - env(safe-area-inset-top));
-    background-color: black;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-}
 
 .link-container {
     width: 800px;
