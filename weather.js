@@ -304,14 +304,6 @@ function toggleNav() {
     } else {
         navMain.style.height = "";
     }
-    if(window.innerHeight < 1000) {
-                // Adjust the position of the nav based on the current scroll position
-    if (navMain.classList.contains("toggle-menu")) {
-        navMain.style.top = `${window.pageYOffset + 44}px`;
-    } else {
-        navMain.style.top = `${window.pageYOffset}px`;
-    }
-    }
 }
 
 function selectOrDeleteLocation(e) {
