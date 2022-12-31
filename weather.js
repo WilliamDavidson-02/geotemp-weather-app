@@ -47,6 +47,11 @@ function getTimeInHours() {
     currentHour = parseInt(resultsArray.location.localtime.substring(11, 13));
 }
 
+function preventRangeSlider() {
+    uvRange.addEventListener('mousedown', e => e.preventDefault());
+    uvRange.addEventListener('touchstart', e => e.preventDefault());
+}
+
 // Build Display and nav locations
 async function buildDisplay() {
     current = [];
@@ -266,16 +271,14 @@ function addToStorage() {
 
 // Select location in nav and display
 async function selectLocation() {
+    requestAnimationFrame(() => {
+        body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
+    })
     forecastHoursContainer.innerHTML = "";
     apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${currentLocation}&days=3&api=yes`;
     try {
         const response = await fetch(apiUrl);
         resultsArray = await response.json();
-        if(navMain.classList.contains("toggle-menu")) {
-            body.style.backgroundColor = "black";
-        } else {
-            body.style.backgroundColor = "#50667f";
-        }
         displayCurrentLocation();
     } catch (error) {
 
@@ -284,6 +287,9 @@ async function selectLocation() {
 
 function toggleNav() {
     navMain.classList.toggle("toggle-menu");
+    requestAnimationFrame(() => {
+        body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
+    })
     navMain.classList.toggle("closed-nav");
     editBtn.classList.toggle("edit")
     body.scrollIntoView({ behavior: "instant", block: "start" });
@@ -291,11 +297,6 @@ function toggleNav() {
     if(isToggled) {
         cancelLocation();
         isToggled = false;
-    }
-    if(navMain.classList.contains("toggle-menu")) {
-        body.style.backgroundColor = "black";
-    } else {
-        body.style.backgroundColor = "#50667f";
     }
     if(!navMain.classList.contains("closed-nav")) {
         const getInnerHight = window.innerHeight;
@@ -347,6 +348,7 @@ navContainer.addEventListener("touchend", () => {
 });
 
 // On load
+preventRangeSlider();
 if(!displayBuilt) {
     buildDisplay();
     displayBuilt = true
