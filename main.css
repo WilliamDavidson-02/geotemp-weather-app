@@ -40,7 +40,8 @@ body {
 }
 
 .toggle-menu {
-    min-height: calc(100% - env(safe-area-inset-bottom));
+    height: calc(100% - env(safe-area-inset-bottom));
+    transition: ease .2s;
     background-color: black;
     scroll-behavior: smooth;
     overflow-y: scroll;
