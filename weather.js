@@ -136,7 +136,7 @@ function createUsersLocations() {
     });
 }
 
-function displayCurrentLocation() {
+function displayCurrentLocation() { 
     createHourlyForecast();
     getExtraWeatherInfo()
     displayLocation.textContent = resultsArray.location.name;
@@ -270,11 +270,13 @@ function addToStorage() {
     getNavLinks();
 }
 
+function toggleBgColor() {
+    body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
+}
+
 // Select location in nav and display
 async function selectLocation() {
-    requestAnimationFrame(() => {
-        body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
-    })
+    toggleBgColor();
     forecastHoursContainer.innerHTML = "";
     apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${currentLocation}&days=3&api=yes`;
     try {
@@ -288,9 +290,11 @@ async function selectLocation() {
 
 function toggleNav() {
     navMain.classList.toggle("toggle-menu");
-    requestAnimationFrame(() => {
-        body.style.backgroundColor = navMain.classList.contains("toggle-menu") ? "black" : "#50667f";
-    })
+    if(navMain.classList.contains("toggle-menu")) {
+        setTimeout(toggleBgColor, 200);
+    } else {
+        toggleBgColor();
+    }
     editBtn.classList.toggle("edit")
     body.scrollIntoView({ behavior: "instant", block: "start" });
     navMain.scrollTo(0, 0);
